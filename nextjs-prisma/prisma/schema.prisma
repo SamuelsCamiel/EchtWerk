@@ -18,34 +18,28 @@ model Account {
   Username    Varchar
   Email   Varchar
   Password  String
-  PermissionsLevel (?)
+  Placeholder*    @relation(fields: [PermissionsLevel], references: [Int*])
+  PermissionsLevel Int
 } 
 
 model Permissions { 
   id    Int     @id @default(autoincrement()) 
-  PermissionsLevel String  @unique
-  accountId
+  PermissionsLevel Int
+  Placeholder*    @relation(fields: [accountId], references: [id])
+  accountId   Int
 } 
-
-
 
 model PinPoints {
   id        Int     @id @default(autoincrement()) 
-  Title
-  Photo
-  Video
-  Description
-  ShortDesc
-  CompName
-  StudentName
-  Course
-  FilterTag
-  accountId
-  filterNaam
+  Title   Varchar
+  Description   Text
+  ShortDesc   Text
+  CompName    Varchar
+  StudentName   Varchar
+  Course    Varchar
+  FilterKleur   Varchar
+  FilterNaam    Varchar
+  Placeholder*    @relation(fields: [accountId], references: [id])
+  accountId   Int 
 }
 
-models Filters {
-  id        Int     @id @default(autoincrement()) 
-  FilterKleur
-  FilterNaam
-}
