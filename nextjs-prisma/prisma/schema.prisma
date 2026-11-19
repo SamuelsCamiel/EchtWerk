@@ -10,36 +10,36 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("mysql://Test:test:3306/Echtwerk")
+
 }
 
 model Account { 
   id        Int     @id @default(autoincrement()) 
-  Username    Varchar
-  Email   Varchar
+  Username    String
+  Email   String
   Password  String
-  Placeholder*    @relation(fields: [PermissionsLevel], references: [Int*])
-  PermissionsLevel Int
+  PermissionsId Permissions @relation(fields: [permissionsId], references: [id])
+  permissionsId Int 
+  Pinpoint PinPoints ?
 } 
 
 model Permissions { 
   id    Int     @id @default(autoincrement()) 
-  PermissionsLevel Int
-  Placeholder*    @relation(fields: [accountId], references: [id])
-  accountId   Int
+  PermissionsDesc String
+  Accounts Account[]
 } 
-
+  
 model PinPoints {
   id        Int     @id @default(autoincrement()) 
-  Title   Varchar
-  Description   Text
-  ShortDesc   Text
-  CompName    Varchar
-  StudentName   Varchar
-  Course    Varchar
-  FilterKleur   Varchar
-  FilterNaam    Varchar
-  Placeholder*    @relation(fields: [accountId], references: [id])
-  accountId   Int 
+  Title   String
+  Description   String
+  ShortDesc   String
+  CompName    String
+  StudentName   String
+  Course    String
+  FilterKleur   String
+  FilterNaam    String
+  AccountId Account @relation(fields: [accountId], references: [id])
+  accountId   Int @unique
 }
 
