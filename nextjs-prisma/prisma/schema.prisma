@@ -37,8 +37,8 @@ model PinPoints {
   CompName    String
   StudentName   String
   Course    String
-  FilterKleur   String
-  FilterNaam    String
+  FilterColor   String
+  FilterName    String
   AccountId Account @relation(fields: [accountId], references: [id])
   accountId   Int @unique
 }
