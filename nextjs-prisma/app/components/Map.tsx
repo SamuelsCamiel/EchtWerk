@@ -19,7 +19,7 @@ export default function App() {
         latitude:  51.90029539032192,
         zoom: 12,
       }}
-      style={{position: 'relative', width: '99vw', height: '99vh'}}
+      style={{position: 'relative', width: '99.9vw', height: '99.9vh'}}
       mapStyle="map1.json"
     />
   );
